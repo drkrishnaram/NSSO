@@ -1,0 +1,625 @@
+
+```{r}
+library(tidyverse)
+```
+# for extraction of NSSO data: 
+#Level 1
+```{r}
+level1 <- read_fwf("r77s331v1L01.txt",fwf_widths(c(3,
+                            5,
+                            2,
+                            3,
+                            1,
+                            1,
+                            3,
+                            2,
+                            2,
+                            2,
+                            1,
+                            4,
+                            1,
+                            2,
+                            1,
+                            2,
+                            5,
+                            2,
+                            1,
+                            1,
+                            1,
+                            4,
+                            4,
+                            4,
+                            6,
+                            6,
+                            3,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            49,
+                            3,
+                            10),
+                          c("centre",
+                            "fsu",
+                            "round",
+                            "schedule",
+                            "sample",
+                            "sector",
+                            "nssr",
+                            "district",
+                            "stratum",
+                            "substratum",
+                            "subround",
+                            "fod",
+                            "sss",
+                            "hsn",
+                            "visit",
+                            "l1v16",
+                            "l1v17",
+                            "l1v18",
+                            "l1v19",
+                            "l1v20",
+                            "l1v21",
+                            "l1v22",
+                            "l1v23",
+                            "l1v24",
+                            "l1v25",
+                            "l1v26",
+                            "l1v27",
+                            "l1v28",
+                            "l1v29",
+                            "l1v30",
+                            "l1v31",
+                            "l1v32",
+                            "l1v33",
+                            "NSC",
+                            "MULT")))
+```
+
+#Level2
+```{r}
+level2<-read_fwf("r77s331v1L02.txt",fwf_widths(c( 3,
+5,
+2,
+3,
+1,
+1,
+3,
+2,
+2,
+2,
+1,
+4,
+1,
+2,
+1,
+2,
+3,
+2,
+1,
+1,
+3,
+2,
+1,
+2,
+2,
+2,
+2,
+10,
+10,
+10,
+1,
+39,
+3,
+10),
+                          c("centre",
+                            "fsu",
+                            "round",
+                            "schedule",
+                            "sample",
+                            "sector",
+                            "nssr",
+                            "district",
+                            "stratum",
+                            "substratum",
+                            "subround",
+                            "fod",
+                            "sss",
+                            "hsn",
+                            "visit",
+                            "l2v16",
+                            "l2v17",
+                            "psn",
+                            "l2v19",
+                            "gender",
+                            "age",
+                            "l2v22",
+                            "l2v23",
+                            "l2v24",
+                            "l2v25",
+                            "l2v26",
+                            "l2v27",
+                            "l2v28",
+                            "l2v29",
+                            "l2v30",
+                            "l2v31",
+                            "l2v32",
+                            "NSC",
+                            "MULT")))
+```
+
+```{r}
+level3<-read_fwf("r77s331v1L03.txt",fwf_widths( c(3,
+                             5,
+                             2,
+                             3,
+                             1,
+                             1,
+                             3,
+                             2,
+                             2,
+                             2,
+                             1,
+                             4,
+                             1,
+                             2,
+                             1,
+                             2,
+                             5,
+                             3,
+                             1,
+                             1,
+                             1,
+                             10,
+                             10,
+                             10,
+                             10,
+                             10,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             1,
+                             18,
+                             3,
+                             10),
+                           c("centre",
+                             "fsu",
+                             "round",
+                             "schedule",
+                             "sample",
+                             "sector",
+                             "nssr",
+                             "district",
+                             "stratum",
+                             "substratum",
+                             "subround",
+                             "fod",
+                             "sss",
+                             "hsn",
+                             "visit",
+                             "l3v16",
+                             "l3v17",
+                             "hhsize",
+                             "religion",
+                             "sg",
+                             "l3v21",
+                             "l3v22",
+                             "l3v23",
+                             "l3v24",
+                             "l3v25",
+                             "mpce",
+                             "l3v27",
+                             "l3v28",
+                             "l3v29",
+                             "l3v30",
+                             "l3v31",
+                             "l3v32",
+                             "l3v33",
+                             "l3v34",
+                             "l3v35",
+                             "l3v36",
+                             "l3v37",
+                             "l3v38",
+                             "l3v39",
+                             "NSC",
+                             "MULT")))
+```
+
+
+```{r}
+level4<-read_fwf("r77s331v1L04.txt",fwf_widths(c(3,
+                            5,
+                            2,
+                            3,
+                            1,
+                            1,
+                            3,
+                            2,
+                            2,
+                            2,
+                            1,
+                            4,
+                            1,
+                            2,
+                            1,
+                            2,
+                            3,
+                            2,
+                            6,
+                            1,
+                            6,
+                            6,
+                            6,
+                            6,
+                            6,
+                            6,
+                            2,
+                            1,
+                            6,
+                            1,
+                            2,
+                            1,
+                            6,
+                            6,
+                            6,
+                            6,
+                            6,
+                            3,
+                            10),
+                          c("centre",
+                            "fsu",
+                            "round",
+                            "schedule",
+                            "sample",
+                            "sector",
+                            "nssr",
+                            "district",
+                            "stratum",
+                            "substratum",
+                            "subround",
+                            "fod",
+                            "sss",
+                            "hsn",
+                            "visit",
+                            "l4v16",
+                            "l4v17",
+                            "l4v18",
+                            "l4v19",
+                            "l4v20",
+                            "l4v21",
+                            "l4v22",
+                            "l4v23",
+                            "l4v24",
+                            "l4v25",
+                            "l4v26",
+                            "l4v27",
+                            "l4v28",
+                            "l4v29",
+                            "l4v30",
+                            "l4v31",
+                            "l4v32",
+                            "l4v33",
+                            "l4v34",
+                            "l4v35",
+                            "l4v36",
+                            "l4v37",
+                            "NSC",
+                            "MULT")))
+```
+```{r}
+level5<-read_fwf("r77s331v1L05.txt",fwf_widths(c(3,
+                            5,
+                            2,
+                            3,
+                            1,
+                            1,
+                            3,
+                            2,
+                            2,
+                            2,
+                            1,
+                            4,
+                            1,
+                            2,
+                            1,
+                            2,
+                            5,
+                            1,
+                            1,
+                            1,
+                            3,
+                            2,
+                            78,
+                            3,
+                            10),
+                          c("centre",
+                            "fsu",
+                            "round",
+                            "schedule",
+                            "sample",
+                            "sector",
+                            "nssr",
+                            "district",
+                            "stratum",
+                            "substratum",
+                            "subround",
+                            "fod",
+                            "sss",
+                            "hsn",
+                            "visit",
+                            "l5v16",
+                            "l5v17",
+                            "l5v18",
+                            "l5v19",
+                            "l5v20",
+                            "l5v21",
+                            "l5v22",
+                            "l5v23",
+                            "NSC",
+                            "MULT")))
+```
+#for genrating weight
+```{r}
+level1<-level1 %>%
+  mutate(weight=MULT/100)
+```
+#for coverting data as it is
+```{r}
+level1<-type.convert(level1, as.is = TRUE)
+level2<-type.convert(level2, as.is = TRUE)
+level3<-type.convert(level3, as.is = TRUE)
+level4<-type.convert(level4, as.is = TRUE)
+
+```
+# for creating landowned variable 
+```{r}
+landowned1<-level4%>%
+  filter(l4v18==1)
+```
+
+# for merging land owned datz to level3
+
+```{r}
+landowned1<-level3%>%
+  left_join(landowned1, by=c("fsu","sss","hsn"),suffix=c("",".y")) %>%
+  select(-ends_with(".y"))
+
+```
+# for creating unique ID (HHID) variable
+```{r}
+landowned1<-landowned1%>%
+  mutate(HHID=paste(fsu, sss, hsn, sep = ""))
+```
+# for checking whether created HHID variable uniquely identifes each of the observation uniquely or not.
+```{r}
+landowned1%>%
+  count(HHID,l4v18)%>%
+  filter(n>1)
+```
+# for filling missing obs with 0.
+```{r}
+landowned1<-landowned1%>%
+  mutate(l4v19=if_else(is.na(l4v19),0,l4v19))
+```
+#load survey package
+
+```{r}
+library(survey)
+```
+
+#generating weight
+```{r}
+landowned1<-landowned1%>%
+  mutate(weight=MULT/100)
+```
+
+#genrating state variable
+```{r}
+landowned1<-landowned1%>%
+  mutate(state=nssr/10)%>%
+  mutate(state=as.integer(state))
+```
+
+# converting acre to hectares
+```{r}
+landowned1<-landowned1%>%
+  mutate(l4v19=l4v19*0.405)
+```
+#setting survey design
+```{r}
+svy_landowned<-svydesign(data=landowned1, id=~HHID,strata = ~sector +stratum+substratum+sss, weights = ~weight)
+
+```
+# getting average distribuion of variable l4v19 across sector and social category
+```{r}
+svyby(~l4v19, ~sector+sg,svy_landowned, na=T,svymean)
+```
+
+#another approach for getting the above output 
+```{r}
+landowned1%>%
+  group_by(sector,sg)%>%
+  summarise(landowned=sum(l4v19*weight),
+            people=sum(weight),
+            meanlandowned=landowned/people)
+
+  
+```
+
+```{r}
+library(gmodels)
+library(vcd)
+```
+for tabulation 
+```{r}
+xtabs(~sector+sg,data=landowned1)
+```
+# for creating land owned category.
+```{r}
+landowned1<-landowned1%>%
+  mutate(landowned=case_when(l4v19>=0 & l4v19<.002~1,
+         l4v19>=.002 & l4v19<1~2,
+         l4v19>=1 & l4v19<2~3,
+         l4v19>=2 & l4v19<4~4,
+         l4v19>=4 & l4v19<10~5,
+         l4v19>=10 ~6))
+         
+```
+# creating subcategory within social categories
+```{r}
+landowned1<-landowned1%>%
+  mutate(caste=case_when(sg==1~1,
+                         sg==2~2,
+                         sg==3 & religion==1 ~3,
+                         sg==3 & religion!=1~4,
+                         sg==9 & religion==1~5,
+                         sg==9 & religion!=1~6))%>%
+  mutate(caste=factor(caste, levels = c(1:6),labels = c("ST","SC","HOBC","NHOBC","HCH","other")))
+```
+# setting survey design again
+```{r}
+svy_landowned<-svydesign(data=landowned1, id=~HHID,strata = ~sector +stratum+substratum+sss, weights = ~weight)
+
+```
+# covertinglandwoend to factor 
+```{r}
+as.factor(landowned1$landowned)
+```
+#distribution of landowned variable across sical category
+```{r}
+svyby(~landowned, ~ sg,svy_landowned, svytotal, na=T)
+```
+#another way of getting the above 
+```{r}
+landowned1%>%
+  group_by(sector,sg)%>%
+  summarise(landowned=sum(landowned*weight))
+```
+
+# feq only
+```{r}
+a<-svytable(~interaction(landowned,sg),design = svy_landowned)
+```
+
+```{r}
+a<-as.data.frame(a)
+```
+
+```{r}
+print(a)
+```
+
+```{r}
+svy_landowned<-update( svy_landowned,
+                       one=1,
+                       landowned=
+                         factor(landowned, levels = c(1:6),
+                                labels=c("Landless", "Marginal","Small",
+                                         "Semi-midium", "Midum", "Large")),
+                       sg=factor(sg,level=c(1,2,3,9), labels=c("ST", "SC","OBC","Other")))
+                      
+                      
+```
+
+# freq along with SE
+```{r}
+b<-svytotal( ~ interaction(landowned, sg),svy_landowned,)
+
+```
+
+```{r}
+print(b)
+```
+```{r}
+library(openxlsx)
+```
+
+
+```{r}
+write.xlsx(a, 'a.xlsx',overwrite = T)
+
+```
+
+
+# for freq across categoreis
+```{r}
+c<-svyby(~ landowned, ~sg, svy_landowned, svytotal)
+```
+```{r}
+write.xlsx(c, "c.xlsx",overwrite = T)
+```
+
+```{r}
+svyby(~ landowned, ~sg, svy_landowned, svytotal)
+```
+
+# below tabel giving us row percetage for each social categories
+```{r}
+svyby(~ landowned, ~sg, svy_landowned, svymean)
+```
+
+
+```{r}
+e<-svyby(~ sg, ~landowned, svy_landowned, svymean)
+
+```
+
+
+```{r}
+e<-svyby( ~landowned, ~state+sg, svy_landowned, svymean)
+```
+
+```{r}
+write.xlsx(e, "e.xlsx",overwrite = T)
+```
+
+```{r}
+f<-svyby( ~landowned, ~caste+state, svy_landowned, svymean)
+```
+```{r}
+write.xlsx(f, "f.xlsx",overwrite = T)
+```
+
+
+# this gives row percentage 
+```{r}
+g<-svyby( ~landowned, ~caste, svy_landowned, svymean)
+```
+
+```{r}
+write.xlsx(g, "g.xlsx",overwrite = T)
+```
+
+# this also give us row percentage, but equivalent to the above col percentage. But still it does not gives total figures.
+
+```{r}
+svyby(  ~caste, ~landowned, svy_landowned, svymean)
+```
+```{r}
+x<-svyby(  ~caste, ~landowned, svy_landowned, svytotal)
+```
+
+```{r}
+typeof(x)
+```
+```{r}
+x<-as.data.frame(x)
+```
+
+```{r}
+x<-x[,1:7]
+```
+
+```{r}
+prop.table(x,1)
+```
+
